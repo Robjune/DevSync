@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevSync | Messages</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="messages-page">
+        <div class="section-container">
+
+            <div class="messages-header">
+                <div>
+                    <p class="section-tag">DEVSYNC ADMIN</p>
+                    <h1>Contact Messages</h1>
+                    <p class="messages-description">
+                        Messages submitted through the DevSync contact form.
+                    </p>
+                </div>
+
+                <button id="clearMessagesBtn" class="clear-btn">
+                    Clear All Messages
+                </button>
+            </div>
+
+            <div id="messagesContainer"></div>
+
+        </div>
+    </section>
+
+    <script>
+        const messagesContainer = document.getElementById("messagesContainer");
+        const clearMessagesBtn = document.getElementById("clearMessagesBtn");
+
+        function loadMessages() {
+
+            const messages =
+                JSON.parse(localStorage.getItem("devsyncMessages")) || [];
+
+            messagesContainer.innerHTML = "";
+
+            if (messages.length === 0) {
+
+                messagesContainer.innerHTML = `
+                    <div class="empty-message">
+                        <h3>No messages yet.</h3>
+                        <p>
+                            Messages submitted through the contact form
+                            will appear here.
+                        </p>
+                    </div>
+                `;
+
+                clearMessagesBtn.style.display = "none";
+                return;
+            }
+
+            clearMessagesBtn.style.display = "block";
+
+            messages.forEach((message, index) => {
+
+                const card = document.createElement("div");
+
+                card.classList.add("message-card");
+
+                card.innerHTML = `
+                    <div class="message-card-top">
+
+                        <div>
+                            <h3>${message.name}</h3>
+                            <p class="message-email">${message.email}</p>
+                        </div>
+
+                        <button
+                            class="delete-message-btn"
+                            onclick="deleteMessage(${index})"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                    <div class="message-body">
+                        <p>${message.message}</p>
+                    </div>
+
+                    <p class="message-date">
+                        Submitted: ${message.date || "No date available"}
+                    </p>
+                `;
+
+                messagesContainer.appendChild(card);
+            });
+        }
+
+
+        function deleteMessage(index) {
+
+            let messages =
+                JSON.parse(localStorage.getItem("devsyncMessages")) || [];
+
+            messages.splice(index, 1);
+
+            localStorage.setItem(
+                "devsyncMessages",
+                JSON.stringify(messages)
+            );
+
+            loadMessages();
+        }
+
+
+        clearMessagesBtn.addEventListener("click", function () {
+
+            const confirmed =
+                confirm("Are you sure you want to delete all messages?");
+
+            if (confirmed) {
+
+                localStorage.removeItem("devsyncMessages");
+
+                loadMessages();
+            }
+        });
+
+
+        loadMessages();
+    </script>
+
+</body>
+</html>
