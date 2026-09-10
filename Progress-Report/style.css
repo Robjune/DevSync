@@ -1,0 +1,531 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #dfe7f1;
+    color: #0f2747;
+    padding: 30px 0;
+}
+
+.report {
+    width: 100%;
+}
+
+.page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 30px;
+    padding: 12mm;
+    background: #ffffff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* HEADER */
+
+.top-header {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    min-height: 120px;
+    margin-bottom: 24px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.header-info {
+    background: linear-gradient(135deg, #0a2342, #123d6c, #1f6fd2);
+    color: white;
+    padding: 24px 28px;
+}
+
+.header-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.header-info p {
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.project-title {
+    background: linear-gradient(135deg, #164b87, #0d2b50);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.4;
+    padding: 20px;
+}
+
+/* MAIN TITLE */
+
+.main-title {
+    font-size: 38px;
+    margin-bottom: 24px;
+    color: #0a2342;
+    letter-spacing: 1px;
+}
+
+.main-title::after {
+    content: "";
+    display: block;
+    width: 110px;
+    height: 5px;
+    background: #2f80ed;
+    margin-top: 8px;
+    border-radius: 20px;
+}
+
+/* SECTION TITLES */
+
+.section-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    color: #0a2342;
+    border-bottom: 2px solid #2f80ed;
+    letter-spacing: 0.4px;
+}
+
+/* CARD CONTAINERS */
+
+.text-box,
+table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.text-box {
+    background: #f4f8fc;
+    border: 1px solid #cbd9ea;
+    padding: 15px;
+    font-size: 10.5px;
+    line-height: 1.6;
+    text-align: justify;
+    box-shadow: 0 2px 8px rgba(20, 70, 120, 0.06);
+}
+
+.text-box p + p {
+    margin-top: 10px;
+}
+
+/* TABLES */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 9.5px;
+    margin-bottom: 18px;
+    border: 1px solid #c8d8e8;
+}
+
+th {
+    background: linear-gradient(135deg, #0d3b66, #155fa0);
+    color: white;
+    padding: 9px 5px;
+    border: 1px solid #5d87ae;
+    font-size: 9px;
+    text-align: center;
+}
+
+td {
+    padding: 8px 6px;
+    border: 1px solid #d3dfeb;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.4;
+}
+
+tbody tr:nth-child(even) {
+    background: #edf4fb;
+}
+
+tbody tr:nth-child(odd) {
+    background: #ffffff;
+}
+
+/* HOVER FOR BROWSER PREVIEW */
+
+tbody tr:hover {
+    background: #dcecff;
+}
+
+/* PAGE FOOTER */
+
+.page::after {
+    content: "DevSync | CPE-201 Group 3";
+    display: block;
+    margin-top: 20px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #0a2342, #164b87);
+    color: white;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+}
+
+/* PRINT */
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+    }
+
+    .page:last-child {
+        page-break-after: auto;
+    }
+
+    tbody tr:hover {
+        background: inherit;
+    }
+}
+
+/* SMALL SCREEN */
+
+@media screen and (max-width: 850px) {
+    body {
+        padding: 10px;
+        overflow-x: auto;
+    }
+
+    .page {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* =========================
+   PAGE 2
+   ========================= */
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+
+    border-bottom: 3px solid #2f80ed;
+}
+
+.page-heading h1 {
+    color: #0a2342;
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+.page-label {
+    color: #2f80ed;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.page-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-left: 20px;
+    border-left: 2px solid #c9d8e8;
+}
+
+.page-number strong {
+    color: #2f80ed;
+    font-size: 34px;
+}
+
+.page-number span {
+    color: #64748b;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+/* PROGRESS CARDS */
+
+.progress-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.progress-card {
+    background: linear-gradient(145deg, #f7fbff, #eaf3fc);
+
+    border: 1px solid #cadced;
+    border-radius: 10px;
+
+    padding: 13px;
+
+    min-height: 115px;
+}
+
+.progress-percent {
+    display: inline-block;
+
+    background: #155fa0;
+    color: white;
+
+    padding: 5px 10px;
+    margin-bottom: 8px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.progress-card h3 {
+    color: #0a2342;
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+
+.progress-card p {
+    color: #425b76;
+    font-size: 8.5px;
+    line-height: 1.5;
+}
+
+/* INFORMATION BOXES */
+
+.info-box {
+    background: #f4f8fc;
+
+    border: 1px solid #cbd9ea;
+    border-left: 4px solid #2f80ed;
+
+    border-radius: 7px;
+
+    padding: 12px 14px;
+    margin-bottom: 15px;
+
+    font-size: 9px;
+    line-height: 1.55;
+    text-align: justify;
+}
+
+/* PHOTO DOCUMENTATION */
+
+.documentation-subtitle {
+    color: #60758c;
+    font-size: 9px;
+    margin-bottom: 10px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.photo-card {
+    padding: 7px;
+
+    border: 1px solid #cbd9ea;
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    box-shadow: 0 2px 7px rgba(20, 60, 100, 0.08);
+}
+
+.photo-placeholder {
+    height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px dashed #91b6dc;
+    border-radius: 6px;
+
+    background: #edf5fc;
+
+    color: #52779c;
+
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.photo-card p {
+    margin-top: 6px;
+
+    color: #304b68;
+
+    font-size: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ACTUAL PHOTO DOCUMENTATION IMAGES */
+
+.documentation-image {
+    width: 100%;
+    height: 105px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    border-radius: 6px;
+    border: 1px solid #cbd9ea;
+    background: #f4f8fc;
+}
+/* =========================
+   PAGE 3 - CODE SHEET
+   ========================= */
+
+.code-intro {
+    margin-bottom: 18px;
+    padding: 11px 14px;
+
+    background: #f4f8fc;
+    border-left: 4px solid #2f80ed;
+    border-radius: 6px;
+
+    color: #425b76;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.code-sheet {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.code-card {
+    border: 1px solid #cbd9ea;
+    border-radius: 10px;
+    background: #ffffff;
+    overflow: hidden;
+
+    box-shadow: 0 2px 8px rgba(20, 60, 100, 0.08);
+}
+
+.code-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 12px;
+
+    background: linear-gradient(135deg, #0a2342, #164b87);
+    color: white;
+}
+
+.code-card-header > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+    background: #2f80ed;
+
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.code-card-header h3 {
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+.code-card-header p {
+    font-size: 7.5px;
+    opacity: 0.8;
+}
+
+.code-image {
+    width: 100%;
+    height: 185px;
+
+    object-fit: contain;
+    object-position: center;
+
+    display: block;
+
+    padding: 5px;
+    background: #0d1117;
+}
+
+.code-caption {
+    padding: 7px 10px;
+
+    color: #304b68;
+
+    font-size: 8px;
+    font-weight: bold;
+    text-align: center;
+
+    background: #f7faff;
+}
+/* PAGE 3 FIT FIX */
+
+.page-three {
+    padding: 10mm 12mm;
+}
+
+.page-three .page-heading {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+}
+
+.page-three .code-intro {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+}
+
+.page-three .code-sheet {
+    gap: 10px;
+}
+
+.page-three .code-card-header {
+    padding: 6px 10px;
+}
+
+.page-three .code-card-header > span {
+    width: 25px;
+    height: 25px;
+}
+
+.page-three .code-image {
+    height: 155px;
+    padding: 4px;
+}
+
+.page-three .code-caption {
+    padding: 5px 8px;
+    font-size: 7.5px;
+}
+
+.page-three::after {
+    margin-top: 12px;
+    padding: 9px 14px;
+}
